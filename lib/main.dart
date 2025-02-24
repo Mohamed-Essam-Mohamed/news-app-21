@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/api/api.dart';
-import 'package:news_app/home_screen.dart';
+import 'package:news_app/screens/home_screen.dart';
 import 'package:news_app/model/sources_response.dart';
 
 void main() async {
@@ -15,9 +16,16 @@ class NewsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: HomeScreen(),
+        );
+      },
     );
   }
 }
